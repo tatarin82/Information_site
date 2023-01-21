@@ -22,11 +22,8 @@
   
   body {
     margin: 0;
-
   }
-  h1 {
-    font-size: 50px;
-  }
+  
   /**
    * Render the `main` element consistently in IE.
    */
