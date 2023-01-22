@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +20,11 @@ Route::get('/indexpage', 'IndexpageController@index')->name('indexpage.index');
 Route::get('/schemes', 'SchemesController@index')->name('schemes.index');
 Route::get('/lab', 'LabController@index')->name('lab.index');
 Route::get('/contacts', 'ContactsController@index')->name('contacts.index');
+Route::post('/schemes/add', function(Request $request){
+    // $request->file('pdf')->store('');
+    $path = Storage::disk('public')->put('',$request->file('pdf'));
+    return $path;
+});
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
