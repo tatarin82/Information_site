@@ -24,8 +24,16 @@
                 </ul>
             </nav>
             <div class="header_list">
-                <li class="header_list_item"><a href="#" class="header_list_link">Войти</a></li>
-                <li class="header_list_item"><a href="#" class="header_list_link">Регистрация</a></li>
+                @guest
+                <li class="header_list_item"><a href="{{ route('login') }}" class="header_list_link">Войти</a></li>
+                @else
+                <li class="header_list_item"><a href="{{ route('logout') }}" class="header_list_link"
+                            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">Выйти</a></li>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                @endguest
             </div>
             <button class="header_menu"></button>
         </div>

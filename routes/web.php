@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,3 +32,8 @@ Route::post('/schemes/add', function(Request $request){
 // })->middleware(['auth'])->name('dashboard');
 
 // require __DIR__.'/auth.php';
+
+Auth::routes();
+
+Route::get('/admin', 'Admin\AdminController@index')->name('admin.schemes')->middleware('auth');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
